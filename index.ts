@@ -1,11 +1,11 @@
-import express from 'express';
-import routerApi from './router/index';
+import express from "express";
+import routerApi from "./router/index";
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
 });
 
-routerApi(app)
+routerApi(app);
