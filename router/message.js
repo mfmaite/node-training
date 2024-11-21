@@ -1,13 +1,10 @@
-const express = require('express')
+const express = require('express');
+const { getMessage, replicateMessage } = require('../controllers/message');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send(req.query.message)
-});
+router.get('/', replicateMessage);
 
-router.get('/:id', (req, res) => {
-  res.send(`El id de este mensaje es: ${req.params.id}`)
-})
+router.get('/:id', getMessage)
 
 module.exports = router;
