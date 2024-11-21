@@ -2,10 +2,11 @@
   "name": "first-steps",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon -I --exec node --experimental-specifier-resolution=node  --loader ts-node/esm ./index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,8 @@
     "nodemon": "^3.1.7"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }
 }
