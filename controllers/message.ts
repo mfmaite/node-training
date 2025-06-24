@@ -1,11 +1,14 @@
-import { Request, Response } from "express";
+import { Controller, Get, Query, Route, Path } from "tsoa";
 
-const getMessage = (req: Request, res: Response) => {
-  res.send(`El id de este mensaje es: ${req.params.id}`);
-};
+@Route("message")
+export class MessageController extends Controller {
+  @Get("{id}")
+  public getMessage(@Path() id: string): string {
+    return `El id de este mensaje es: ${id}`;
+  }
 
-const replicateMessage = (req: Request, res: Response) => {
-  res.send(req.query.message);
-};
-
-export { getMessage, replicateMessage };
+  @Get()
+  public replicateMessage(@Query() message: string): string {
+    return message;
+  }
+}
