@@ -1,6 +1,6 @@
-import { Body, Controller, Post, Route, Get, Path } from "tsoa";
+import { Body, Controller, Post, Route, Get, Path, Delete } from "tsoa";
 import { CreatePostData } from "../types/post";
-import { createPost, getPost, getPosts } from "../services/post";
+import { createPost, getPost, getPosts, deletePost } from "../services/post";
 
 @Route("post")
 export class PostsController extends Controller {
@@ -18,5 +18,10 @@ export class PostsController extends Controller {
   @Get("{id}")
   public async getPost(@Path() id: number) {
     return getPost(id);
+  }
+
+  @Delete("{id}")
+  public async deletePost(@Path() id: number) {
+    return deletePost(id);
   }
 }

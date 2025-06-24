@@ -42,3 +42,18 @@ export const getPost = async (id: number) => {
     throw new Error("Failed to get post");
   }
 };
+
+export const deletePost = async (id: number) => {
+  try {
+    const post = await prisma.post.delete({
+      where: {
+        id,
+      },
+    });
+
+    return post;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to delete post");
+  }
+};
