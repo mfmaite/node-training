@@ -4,6 +4,8 @@
 import type { TsoaRoute } from '@tsoa/runtime';
 import {  fetchMiddlewares, ExpressTemplateService } from '@tsoa/runtime';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { PostsController } from './../controllers/posts';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { MessageController } from './../controllers/message';
 import type { Request as ExRequest, Response as ExResponse, RequestHandler, Router } from 'express';
 
@@ -12,6 +14,11 @@ import type { Request as ExRequest, Response as ExResponse, RequestHandler, Rout
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
+    "CreatePostData": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"published":{"dataType":"boolean","required":true},"content":{"dataType":"string","required":true},"title":{"dataType":"string","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const templateService = new ExpressTemplateService(models, {"noImplicitAdditionalProperties":"throw-on-extras","bodyCoercion":true});
 
@@ -29,6 +36,125 @@ export function RegisterRoutes(app: Router) {
 
 
     
+        const argsPostsController_createPost: Record<string, TsoaRoute.ParameterSchema> = {
+                data: {"in":"body","name":"data","required":true,"ref":"CreatePostData"},
+        };
+        app.post('/post',
+            ...(fetchMiddlewares<RequestHandler>(PostsController)),
+            ...(fetchMiddlewares<RequestHandler>(PostsController.prototype.createPost)),
+
+            async function PostsController_createPost(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsPostsController_createPost, request, response });
+
+                const controller = new PostsController();
+
+              await templateService.apiHandler({
+                methodName: 'createPost',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsPostsController_getPosts: Record<string, TsoaRoute.ParameterSchema> = {
+        };
+        app.get('/post',
+            ...(fetchMiddlewares<RequestHandler>(PostsController)),
+            ...(fetchMiddlewares<RequestHandler>(PostsController.prototype.getPosts)),
+
+            async function PostsController_getPosts(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsPostsController_getPosts, request, response });
+
+                const controller = new PostsController();
+
+              await templateService.apiHandler({
+                methodName: 'getPosts',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsPostsController_getPost: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+        };
+        app.get('/post/:id',
+            ...(fetchMiddlewares<RequestHandler>(PostsController)),
+            ...(fetchMiddlewares<RequestHandler>(PostsController.prototype.getPost)),
+
+            async function PostsController_getPost(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsPostsController_getPost, request, response });
+
+                const controller = new PostsController();
+
+              await templateService.apiHandler({
+                methodName: 'getPost',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsPostsController_deletePost: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+        };
+        app.delete('/post/:id',
+            ...(fetchMiddlewares<RequestHandler>(PostsController)),
+            ...(fetchMiddlewares<RequestHandler>(PostsController.prototype.deletePost)),
+
+            async function PostsController_deletePost(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsPostsController_deletePost, request, response });
+
+                const controller = new PostsController();
+
+              await templateService.apiHandler({
+                methodName: 'deletePost',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
         const argsMessageController_getMessage: Record<string, TsoaRoute.ParameterSchema> = {
                 id: {"in":"path","name":"id","required":true,"dataType":"string"},
         };
