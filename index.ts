@@ -4,6 +4,9 @@ import { readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import swaggerUi from 'swagger-ui-express';
+import helmet from 'helmet';
+import cors from 'cors';
+import { getSecurityConfig } from './config/security.js';
 
 declare module 'express-serve-static-core' {
   interface Request {
@@ -12,6 +15,11 @@ declare module 'express-serve-static-core' {
 }
 
 export const app = express();
+
+const securityConfig = getSecurityConfig();
+
+app.use(helmet(securityConfig.helmet));
+app.use(cors(securityConfig.cors));
 
 app.use(express.json());
 
